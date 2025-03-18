@@ -168,6 +168,8 @@ function algojuggle:update()
       end
    end
    -- print the pattern on the console
+   pd.post("new pattern " .. print_table(self.pattern) ..
+           string.format(" (%d beats, %d objects)", self.len, self.nobjs))
    pd.post("pat = " .. print_table(self.pat))
    pd.post("objs = " .. print_table(self.objs))
 end
