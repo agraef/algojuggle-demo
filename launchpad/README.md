@@ -10,7 +10,7 @@ There are two different custom modes, one pair (custom modes 1 and 3) for the La
 
 Here's how the custom modes look on the LP X, mode 5 on the left, mode 6 on the right (corresponding modes 1 and 3 will look pretty much the same on the LP Mini):
 
-![lpx-algojuggle](/home/ag/Desktop/launchpad-algojuggle/lpx-algojuggle.png)
+![lpx-algojuggle](lpx-algojuggle.png)
 
 ## Drumpad Mode (LP Mini mode 1, LP X mode 5)
 
