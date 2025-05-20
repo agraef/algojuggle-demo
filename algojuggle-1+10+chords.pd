@@ -1,11 +1,9 @@
-#N canvas 738 383 450 300 12;
-#X declare -path lib;
+#N canvas 739 383 450 300 12;
 #X obj 40 30 algojuggle-ex 1;
 #X obj 40 60 algojuggle-ex 10;
 #X msg 30 150 12 \; pd-algojuggle-ex.pd vis 1;
 #X obj 30 195 pgmout 1;
 #X obj 30 120 loadbang;
-#X obj 260 30 declare -path lib;
 #X obj 190 30 chords;
 #X connect 2 0 3 0;
 #X connect 4 0 2 0;
