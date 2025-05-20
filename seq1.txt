@@ -1,0 +1,23 @@
+# initial setup;
+bpm 240;
+pat 5 3 4;
+midi 80 120 35 42 47 48;
+cmd reset;
+
+# start;
+metro 1;
+
+# site swap 2 3;
+4500 cmd swap 2 3, reset;
+
+# site swap 1 3;
+6000 cmd swap 1 3, reset;
+
+# site swap 1 2;
+4500 cmd swap 1 2, reset;
+
+# back to first pattern;
+3000 pat 5 3 4; cmd reset;
+
+# stop;
+4500 metro 0;

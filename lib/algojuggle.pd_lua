@@ -179,6 +179,8 @@ function algojuggle:initialize(sel, atoms)
    self.outlets = 4
    -- beat counter
    self.pos = 0
+   -- loop counter
+   self.loop = nil
    -- default pattern 534
    self.pattern = {5,3,4}
    self.pat, self.objs = analyze_pattern(self.pattern)
@@ -205,6 +207,7 @@ function algojuggle:in_1_list(pattern)
       self.pattern = pattern
       self.pat, self.objs = pat, objs
       self:update()
+      self.loop = nil
    else
       -- analyze_pattern exited with an exception, in this case pat will have
       -- the error message
@@ -225,14 +228,17 @@ function algojuggle:in_2_list(preset)
       preset[i] = math.floor(k)
    end
    local minvel, maxvel = table.unpack(preset)
-   local notes = table.move(preset, 3, #preset, 1, notes)
+   local notes = {}
+   table.move(preset, 3, #preset, 1, notes)
    -- do some more sanity tests
-   if not minvel or not maxvel or #notes < 1 then
+   if not minvel or not maxvel then
       self:error("invalid preset: not enough arguments, must be minvel, maxvel, notes")
       return
    end
    self.minvel, self.maxvel = minvel, maxvel
-   self.notes = notes
+   if #notes > 0 then
+      self.notes = notes
+   end
 end
 
 function algojuggle:in_1_float(f)
@@ -243,10 +249,19 @@ end
 -- cycle through the pattern
 function algojuggle:in_1_bang()
    if self.len > 0 then
-      -- next beat
-      self.pos = self.pos + 1
-      if self.pos > self.len then
-	 self.pos = 1
+      if not self.loop or self.loop.ctr < self.loop.len then
+	 -- next beat
+	 self.pos = self.pos + 1
+	 if self.pos > self.len then
+	    self.pos = 1
+	 end
+	 if self.loop then
+	    self.loop.ctr = self.loop.ctr + 1
+	 end
+      else
+	 -- at the end of loop, go to the beginning
+	 self.pos = self.loop.pos
+	 self.loop.ctr = 1
       end
       local i, k = table.unpack(self.pat[self.pos])
       -- output the current postion and pattern entry for debugging purposes
@@ -265,9 +280,42 @@ function algojuggle:in_1_bang()
    end
 end
 
+-- set the looper
+function algojuggle:in_1_loop(args)
+   local rate = args[1]
+   if self.len > 0 and type(rate) == "number" and rate >= 0 then
+      rate = math.floor(rate)
+   else
+      rate = 0
+   end
+   if rate == 0 then
+      self.loop = nil
+      return
+   end
+   -- Rate values on the Beatstep Pro are 25 (slowest), 50, 75 and 100
+   -- (fastest). We rather arbitrily map these to 4, 3, 2, 1 steps here,
+   -- respectively, but you can adjust the mapping below as needed.
+   rate = math.min(4, math.max(1, math.ceil(rate/25)))
+   local steps = {4, 3, 2, 1}
+   self.loop = { pos = self.pos, ctr = 1, len = steps[rate]}
+   --pd.post("loop " .. self.loop.len .. " at " .. self.loop.pos)
+end
+
 -- reset the playback position
 function algojuggle:in_1_reset()
    self.pos = 0
+   self.loop = nil
+end
+
+-- set the playback position (0-based)
+function algojuggle:in_1_pos(args)
+   local pos = args[1]
+   if self.len > 0 and type(pos) == "number" and pos >= 0 then
+      self.pos = math.floor(pos) % self.len
+   else
+      self.pos = 0
+   end
+   self.loop = nil
 end
 
 -- site swap

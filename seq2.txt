@@ -1,0 +1,15 @@
+# initial setup;
+bpm 240;
+pat 5 3 4;
+midi 80 120 36 38 44 46;
+cmd reset;
+
+# start;
+metro 1;
+
+# change pattern;
+4500 midi 80 120 40 42 48 50;
+pat 3 4 2;
+
+# stop;
+4500 metro 0;
