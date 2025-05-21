@@ -1,5 +1,7 @@
 # algojuggle demo
 
+May 2025, Albert Gräf <aggraef@gmail.com>
+
 This directory has some demo patches which go along with the [LAC 25 paper](doc/algojuggle.pdf).
 
 - algojuggle-demo.pd: The demo patch from the paper which uses the external in algojuggle.pd_lua.
@@ -76,4 +78,4 @@ The midi subpatch also provides some similar (albeit more limited) controls for 
 
 As already mentioned, the performance controls describe above should work pretty much out of the box on most Novation Launchpad controllers, if you configure the Launchpad's drum pad mode with the Novation Components software so that it emits notes on MIDI channel 10. However, for your convenience we have also included some suitable custom modes specifically for the [Launchpad X](https://novationmusic.com/products/launchpad-x) and the [Launchpad Mini MK3](https://novationmusic.com/products/launchpad-mini-mk3), you can find these in the launchpad subdirectory, please check the corresponding [README](launchpad/README.md) for details.
 
-May 2025, Albert Gräf <aggraef@gmail.com>
+**NOTE:** It appears that for some reason, in the custom modes the Launchpad X emits the same note data on *both* its MIDI and DAW ports. Having both ports connected will confuse the algojuggle-ex patch and result in spurious double notes. Therefore it is important that you only connect one of these ports (typically the MIDI port) to Pd's MIDI input when running algojuggle-ex. (None of the other MK3 Launchpad models have this defect, so it is safe to also have the DAW port connected with both the Mini and Pro models.)
