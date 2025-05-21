@@ -36,4 +36,4 @@ In addition, notes 60..63 (which will be the third row of the second bank on a t
 
 All chord notes will play at the same velocity given by the velocity with which you hit the pad on the first bank, and they will last as long as you keep pressing that pad (or press another pad to recall a different chord, whichever happens first).
 
-The launchpad subdirectory includes some ready-made custom modes for the Launchpad X and Mini MK3 which also includes a layout for playing back chords using the note assignment described above. Please check the corresponding [README](../launchpad/README.md) file for details.
+The launchpad subdirectory includes some ready-made custom modes for the current generation of Novation Launchpad controllers (X, Pro MK3, and Mini MK3) which also include layouts for playing back chords using the note assignment described above. Please check the corresponding [README](../launchpad/README.md) file for details.
