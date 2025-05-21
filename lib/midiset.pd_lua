@@ -23,6 +23,7 @@ function midiset:initialize(sel, atoms)
    self.vel, self.chan = 0, 10
    self.tempo_index = 4
    self.sel = 0
+   self.looper = false
    self.prefix = {80,120}
    -- parse creation arguments
    local args = {}
@@ -94,6 +95,7 @@ function midiset:in_1_float(x)
 	       self:tempo_change(-1)
 	    elseif note <= 87 then
 	       -- emulate the roller/looper strip of the Beatstep Pro
+	       self.looper = true
 	       local rate = {25, 50, 75, 100}
 	       self:outlet(1, "loop", {rate[note-83]})
 	    elseif note == 88 then
@@ -131,8 +133,15 @@ function midiset:in_1_float(x)
 	 end
 	 -- stop selection mode
 	 self.sel = 0
+	 -- also make sure to stop the looper to prevent it from hanging if
+	 -- the user happens to release the tempo pad before the looper pad
+	 if self.looper then
+	    self.looper = false
+	    self:outlet(1, "loop", {0})
+	 end
       elseif self.sel > 0 and note <= 87 then
 	 -- emulate the roller/looper strip of the Beatstep Pro
+	 self.looper = false
 	 self:outlet(1, "loop", {0})
       end
    elseif self.filter_ch and self.chan ~= self.filter_ch then
