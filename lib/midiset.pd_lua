@@ -106,7 +106,13 @@ function midiset:in_1_float(x)
 	       self:in_1_prefix()
 	    elseif note <= 91 then
 	       -- mute (per channel)
-	       if not self.filter_ch or self.chan == self.filter_ch then
+	       -- XXXFIXME: This should really be configurable, but currently
+	       -- we have no way of knowing which channels are being used in
+	       -- other instances. So instead we use pad 91 to mute channel 10
+	       -- (the drum channel) and pad 90 to mute any other channel.
+	       if not self.filter_ch or
+		  note == 91 and self.filter_ch == 10 or
+		  note == 90 and self.filter_ch ~= 10 then
 		  if self:timecheck() then
 		     -- mute/unmute
 		     self:outlet(1, "mute", {})
@@ -149,12 +155,14 @@ function midiset:in_1_float(x)
       if self.sel > 0 then
 	 self.sel = 2
       end
+--[[ -- gets in the way when using sequencing, disabled for now
    elseif self.sel > 0 then
       if vel > 0 and self:timecheck() then
 	 -- mute/unmute
 	 self:outlet(1, "mute", {})
 	 self.sel = 2
       end
+]]
    elseif vel > 0 and not self.noteon[note] then
       self.noteon[note] = true
       table.insert(self.notes, note)
