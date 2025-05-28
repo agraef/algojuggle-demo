@@ -1,0 +1,10 @@
+#N canvas 738 383 450 300 12;
+#X obj 60 60 notein 4;
+#X floatatom 60 89 5 0 0 0 - - -, f 5;
+#X floatatom 113 89 5 0 0 0 - - -, f 5;
+#X obj 60 147 noteout 4;
+#X text 60 30 play organ solo (or anything else) on channel 4;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 3 1;
