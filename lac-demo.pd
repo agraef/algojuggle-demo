@@ -1,0 +1,37 @@
+#N canvas 745 383 450 300 12;
+#X obj 40 60 algojuggle-ex 10;
+#X obj 30 120 loadbang;
+#X obj 190 30 chords;
+#X obj 260 30 solo4;
+#X msg 30 150 17 \; pd-algojuggle-ex.pd vis 1;
+#X obj 30 195 pgmout 4;
+#X obj 40 30 algojuggle-ex 1;
+#X obj 210 72 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#N canvas 793 385 450 300 switch-ab 0;
+#X obj 110 86 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 130 86 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1;
+#X msg 110 120 mute 1 \$1;
+#X obj 110 149 s all-midiset;
+#X msg 110 180 mute \$1;
+#X obj 110 209 s all-arp;
+#X obj 110 20 inlet;
+#X obj 110 49 t b b;
+#X obj 200 20 ctlin 64;
+#X obj 200 49 sel 0;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 7 1 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X coords 0 -1 1 1 142 22 1 13 83;
+#X restore 210 100 pd switch-ab;
+#X connect 1 0 4 0;
+#X connect 4 0 5 0;
+#X connect 7 0 8 0;
