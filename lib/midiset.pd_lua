@@ -177,6 +177,17 @@ function midiset:in_1_float(x)
    end
 end
 
+function midiset:in_1_mute(atoms)
+   local chan, val = table.unpack(atoms)
+   if not self.filter_ch or self.filter_ch == chan then
+      if val then
+	 self:outlet(1, "mute", {val})
+      else
+	 self:outlet(1, "mute", {})
+      end
+   end
+end
+
 function midiset:in_1_prefix(atoms)
    self.prefix = atoms and #atoms >= 1 and atoms or {80,120}
    if #self.prefix <= 1 then
