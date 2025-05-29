@@ -12,9 +12,9 @@ local swaps = {{1,2}, {2,3}, {3,4}, {4,5},
 -- tempos (bpm), adjust as needed
 local tempos = {30, 60, 90, 120, 180, 240, 360, 480}
 
--- the object takes 0, 1, or 3 args: [ch] [minvel maxvel]
+-- the object takes 0, 1, or 2 args: [ch [outch]]
 -- ch = MIDI input channel (default: omni)
--- minvel maxvel = velocity range used as prefix for the setup (default: 80 120)
+-- outch = MIDI output channel (default: same as last input note)
 function midiset:initialize(sel, atoms)
    self.inlets = 3
    self.outlets = 3
@@ -34,12 +34,9 @@ function midiset:initialize(sel, atoms)
 	 break
       end
    end
-   if #args == 1 or #args == 3 then
+   if #args >= 1 then
       self.filter_ch = args[1] > 0 and args[1] or nil
-      table.remove(args, 1)
-   end
-   if #args == 2 then
-      self:in_1_prefix(args)
+      self.out_chan = args[2] and args[2] > 0 and args[2] or nil
    end
    self.init = true
    return true
@@ -166,7 +163,8 @@ function midiset:in_1_float(x)
    elseif vel > 0 and not self.noteon[note] then
       self.noteon[note] = true
       table.insert(self.notes, note)
-      self:outlet(3, "float", {self.chan})
+      local chan = self.out_chan and self.out_chan or self.chan
+      self:outlet(3, "float", {chan})
       self:outlet(2, "list", {self.prefix[1], self.prefix[2], table.unpack(self.notes)})
    elseif vel == 0 and self.noteon[note] then
       self.noteon[note] = nil
