@@ -1,4 +1,4 @@
-#N canvas 747 383 450 300 12;
+#N canvas 489 387 450 300 12;
 #X obj 40 60 algojuggle-ex 10;
 #X obj 30 120 loadbang;
 #X obj 190 30 chords;
@@ -49,7 +49,24 @@
 #X restore 210 100 pd switch-ab;
 #X obj 345 72 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
+#X obj 240 160 tgl 25 1 empty empty empty 17 7 0 10 #a7fbdb #000000
+#000000 1 1;
+#N canvas 592 487 450 300 raptor-sync 0;
+#X obj 20 90 spigot;
+#X obj 20 60 r all-metro;
+#X obj 20 180 s all-play;
+#X obj 20 20 inlet;
+#X obj 20 148 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1;
+#X obj 20 119 change -1;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X restore 240 200 pd raptor-sync;
 #X connect 1 0 4 0;
 #X connect 4 0 5 0;
 #X connect 7 0 8 0;
 #X connect 9 0 8 1;
+#X connect 10 0 11 0;
