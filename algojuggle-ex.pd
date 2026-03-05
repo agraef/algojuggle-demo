@@ -1,4 +1,4 @@
-#N canvas 940 266 522 487 12;
+#N canvas 940 265 523 489 12;
 #X declare -path lib;
 #X obj 113 257 r \$0-midi;
 #X obj 113 167 r \$0-pat;
@@ -112,7 +112,7 @@ to be assigned to each object, f 24;
 #000000;
 #X obj 400 10 tgl 15 0 empty \$0-seq empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#N canvas 747 383 450 300 cmd 0;
+#N canvas 732 468 456 303 cmd 0;
 #X obj 20 20 inlet;
 #X obj 20 99 s \$0-metro;
 #X obj 99 99 s \$0-bpm;
@@ -123,6 +123,7 @@ to be assigned to each object, f 24;
 #X obj 20 130 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X obj 20 154 s all-metro;
+#X obj 80 20 r all-cmd;
 #X connect 0 0 5 0;
 #X connect 5 0 1 0;
 #X connect 5 0 7 0;
@@ -131,6 +132,7 @@ to be assigned to each object, f 24;
 #X connect 5 3 3 0;
 #X connect 5 4 4 0;
 #X connect 7 0 8 0;
+#X connect 9 0 5 0;
 #X restore 10 388 pd cmd;
 #N canvas 889 364 800 393 midi 0;
 #X obj 20 20 notein;

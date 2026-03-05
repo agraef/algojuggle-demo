@@ -1,4 +1,4 @@
-#N canvas 10 417 400 221 12;
+#N canvas 8 416 404 223 12;
 #X symbolatom 30 20 10 0 0 0 - #0-prog -, f 10;
 #X symbolatom 120 20 10 0 0 0 - #0-name -, f 10;
 #X obj 30 80 chordprog;
@@ -45,7 +45,7 @@
 #X connect 7 0 4 0;
 #X connect 8 0 5 0;
 #X restore 30 120 pd prog-set;
-#N canvas 957 308 450 300 prog-out 0;
+#N canvas 956 308 452 301 prog-out 0;
 #X obj 20 80 drip;
 #X obj 20 20 inlet;
 #X obj 145 20 inlet;
@@ -96,6 +96,8 @@
 #X floatatom 320 140 5 0 64 2 channel - -, f 5;
 #X obj 319 102 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
+#X obj 120 50 r all-ch9;
+#X obj 120 79 unpack f f;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 8 0;
@@ -110,3 +112,6 @@
 #X connect 7 0 9 3;
 #X connect 11 0 9 4;
 #X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 14 0 2 0;
+#X connect 14 1 2 1;
