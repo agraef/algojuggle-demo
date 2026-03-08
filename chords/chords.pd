@@ -1,6 +1,6 @@
 #N canvas 8 416 404 335 12;
-#X symbolatom 30 20 10 0 0 0 - #0-prog -, f 10;
-#X symbolatom 120 20 10 0 0 0 - #0-name -, f 10;
+#X symbolatom 30 27 10 0 0 0 - #0-prog -, f 10;
+#X symbolatom 110 27 10 0 0 0 - #0-name -, f 10;
 #X obj 30 80 chordprog;
 #X obj 320 20 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -96,18 +96,22 @@
 #X floatatom 320 140 5 0 64 2 channel - -, f 5;
 #X obj 319 102 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 120 50 r all-ch9;
-#X obj 120 79 unpack f f;
+#X obj 110 50 r all-ch9;
+#X obj 110 79 unpack f f;
 #X floatatom 30 172 5 0 0 0 - - -, f 5;
 #X obj 30 200 permute;
 #X floatatom 30 229 5 0 0 0 - - -, f 5;
-#X obj 224 22 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 204 22 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 111 5 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X obj 130 239 s solo;
 #X obj 130 210 == 0;
 #X obj 200 210 loadbang;
+#X obj 147 5 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X obj 167 5 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X obj 225 27 t b f;
+#X obj 205 57 expr $f1+2*$f2;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 8 0;
@@ -129,8 +133,12 @@
 #X connect 16 0 17 0;
 #X connect 17 0 2 0;
 #X connect 18 0 16 1;
-#X connect 18 0 21 0;
-#X connect 19 0 16 1;
-#X connect 21 0 20 0;
-#X connect 22 0 16 1;
-#X coords 0 -1 1 1 220 44 1 25 0;
+#X connect 20 0 19 0;
+#X connect 21 0 16 1;
+#X connect 22 0 25 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 24 1 25 1;
+#X connect 25 0 16 1;
+#X connect 25 0 20 0;
+#X coords 0 -1 1 1 164 50 1 25 0;

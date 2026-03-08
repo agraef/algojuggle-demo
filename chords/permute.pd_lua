@@ -8,26 +8,34 @@ local permute = pd.class("permute")
 function permute:initialize(sel, atoms)
    self.inlets = 2
    self.outlets = 1
-   -- permutation of 0..3
-   self.prm = {0,1,2,3}
-   self.enable = false
+   -- row and column permutations of 0..3
+   self.rp = {0,1,2,3}
+   self.rc = {0,1,2,3}
+   -- mode (0 = none, 1 = row, 2 = column, 3 = both)
+   self.mode = 0
    return true
 end
 
 function permute:in_1_float(note)
    local n = math.floor(note)-36
-   if self.enable and n >= 0 and n <= 15 then
-      -- this leaves banks and columns intact and just permutes the rows, with
-      -- the MPC chord progressions presumably this makes sure that the chord
-      -- relationships are somewhat similar
-      local r, c = self.prm[n // 4 + 1], n % 4
+   if self.mode > 0 and n >= 0 and n <= 15 then
+      -- this leaves the banks intact and just permutes the row and column
+      -- indices separately in order to maintain chord relationships to some
+      -- extent (at least when using the MPC chord progressions)
+      local r, c = n // 4, n % 4
+      if self.mode & 1 ~= 0 then
+	 r = self.rp[r+1]
+      end
+      if self.mode & 2 ~= 0 then
+	 c = self.cp[c+1]
+      end
       note = r*4 + c + 36
    end
    self:outlet(1, "float", {note})
 end
 
 function permute:in_2_float(f)
-   self.enable = f ~= 0
+   self.mode = math.floor(f)
 end
 
 -- helper function to pretty-print tables
@@ -40,13 +48,18 @@ local function print_table(t)
    return s
 end
 
-function permute:in_2_bang()
-   -- compute a new permutation
-   local prm = {0,1,2,3}
-   for i = 1, 3 do
-      local j = math.random(i, 4)
-      prm[i], prm[j] = prm[j], prm[i]
+local function random_permutation(t)
+   local n = #t
+   for i = 1, n-1 do
+      local j = math.random(i, n)
+      t[i], t[j] = t[j], t[i]
    end
-   pd.post("permutation " .. print_table({prm[1]+1,prm[2]+1,prm[3]+1,prm[4]+1}))
-   self.prm = prm
+   return t
+end
+
+function permute:in_2_bang()
+   -- compute new permutations
+   self.rp = random_permutation({0,1,2,3})
+   self.cp = random_permutation({0,1,2,3})
+   pd.post("permutation row " .. print_table({self.rp[1]+1,self.rp[2]+1,self.rp[3]+1,self.rp[4]+1}) .. ", col " .. print_table({self.cp[1]+1,self.cp[2]+1,self.cp[3]+1,self.cp[4]+1}))
 end
