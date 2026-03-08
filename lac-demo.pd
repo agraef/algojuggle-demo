@@ -119,6 +119,7 @@
 #X obj 300 63 pipe 1500;
 #X obj 220 10 del 2000;
 #X msg 220 39 0;
+#X obj 130 227 s loopend;
 #X connect 0 0 9 0;
 #X connect 0 1 6 0;
 #X connect 1 0 0 0;
@@ -127,6 +128,7 @@
 #X connect 4 0 0 0;
 #X connect 5 0 0 0;
 #X connect 6 0 2 0;
+#X connect 6 0 36 0;
 #X connect 7 0 1 0;
 #X connect 7 0 14 0;
 #X connect 7 0 34 0;
@@ -172,6 +174,7 @@
 #X text 336 258 pause/continue;
 #X text 240 230 autoplay sequence;
 #X text 210 150 ^-- random permutation of chords;
+#X text 156 70 r c permute;
 #X connect 1 0 4 0;
 #X connect 4 0 5 0;
 #X connect 7 0 8 0;
