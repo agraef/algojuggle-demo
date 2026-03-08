@@ -1,4 +1,4 @@
-#N canvas 488 384 473 351 12;
+#N canvas 488 384 476 351 12;
 #X obj 30 60 algojuggle-ex 10;
 #X obj 30 160 loadbang;
 #X obj 30 90 chords;
@@ -62,7 +62,7 @@
 #X obj 20 180 s all-play;
 #X obj 20 20 inlet;
 #X obj 20 148 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#000000 1 1;
 #X obj 20 119 change -1;
 #X connect 0 0 5 0;
 #X connect 1 0 0 0;
@@ -113,9 +113,12 @@
 #000000;
 #X obj 450 40 r all-metro;
 #X obj 450 98 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#000000 1 1;
 #X obj 450 69 change -1;
 #X obj 380 100 t f f;
+#X obj 300 63 pipe 1500;
+#X obj 220 10 del 2000;
+#X msg 220 39 0;
 #X connect 0 0 9 0;
 #X connect 0 1 6 0;
 #X connect 1 0 0 0;
@@ -126,6 +129,7 @@
 #X connect 6 0 2 0;
 #X connect 7 0 1 0;
 #X connect 7 0 14 0;
+#X connect 7 0 34 0;
 #X connect 8 0 3 0;
 #X connect 8 0 24 0;
 #X connect 8 1 2 0;
@@ -149,12 +153,15 @@
 #X connect 23 1 5 0;
 #X connect 25 0 27 0;
 #X connect 26 0 22 0;
-#X connect 27 0 21 0;
+#X connect 27 0 33 0;
 #X connect 29 0 31 0;
 #X connect 30 0 23 0;
 #X connect 31 0 30 0;
 #X connect 32 0 23 0;
 #X connect 32 1 12 0;
+#X connect 33 0 21 0;
+#X connect 34 0 35 0;
+#X connect 35 0 33 1;
 #X coords 0 -1 1 1 73 40 1 127 119;
 #X restore 240 290 pd lp-seq;
 #X obj 240 260 tgl 25 1 empty empty empty 17 7 0 10 #70dbff #000000
