@@ -1,12 +1,12 @@
-#N canvas 488 384 412 322 12;
-#X obj 40 70 algojuggle-ex 10;
-#X obj 30 120 loadbang;
-#X obj 200 110 chords;
-#X obj 270 110 solo4;
-#X msg 30 150 17 \; pd-algojuggle-ex.pd vis 1;
-#X obj 30 195 pgmout 4;
-#X obj 40 40 algojuggle-ex 1;
-#X obj 200 42 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#N canvas 488 384 473 351 12;
+#X obj 30 60 algojuggle-ex 10;
+#X obj 30 160 loadbang;
+#X obj 30 90 chords;
+#X obj 270 90 solo4;
+#X msg 30 190 17 \; pd-algojuggle-ex.pd vis 1;
+#X obj 30 235 pgmout 4;
+#X obj 30 30 algojuggle-ex 1;
+#X obj 270 32 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #N canvas 796 384 452 303 switch-ab 0;
 #X obj 110 86 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -51,10 +51,10 @@
 #X connect 13 0 15 0;
 #X connect 14 0 12 0;
 #X coords 0 -1 1 1 142 22 1 13 83;
-#X restore 200 70 pd switch-ab;
-#X obj 335 42 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X restore 270 60 pd switch-ab;
+#X obj 405 32 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 30 230 tgl 25 1 empty empty empty 17 7 0 10 #a7fbdb #000000
+#X obj 30 270 tgl 25 1 empty empty empty 17 7 0 10 #a7fbdb #000000
 #000000 1 1;
 #N canvas 592 484 452 303 raptor-sync 0;
 #X obj 20 90 spigot;
@@ -62,15 +62,15 @@
 #X obj 20 180 s all-play;
 #X obj 20 20 inlet;
 #X obj 20 148 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#000000 0 1;
 #X obj 20 119 change -1;
 #X connect 0 0 5 0;
 #X connect 1 0 0 0;
 #X connect 3 0 0 1;
 #X connect 4 0 2 0;
 #X connect 5 0 4 0;
-#X restore 30 270 pd raptor-sync;
-#N canvas 204 396 537 303 lp-seq 0;
+#X restore 30 310 pd raptor-sync;
+#N canvas 204 396 540 303 lp-seq 0;
 #X obj 30 110 seq;
 #X msg 30 50 read algojuggle-seq.mid;
 #X msg 80 90 bang;
@@ -97,7 +97,7 @@
 #X obj 380 69 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 1 1;
 #X obj 380 130 sel 0 1;
-#N canvas 541 324 453 303 panic 0;
+#N canvas 540 324 455 303 panic 0;
 #X msg 20 70 0 123 1 \, 0 123 4 \, 0 123 10;
 #X obj 20 99 ctlout;
 #X text 80 20 all-notes-off on ch 1 \, 4 \, and 10;
@@ -113,7 +113,7 @@
 #000000;
 #X obj 450 40 r all-metro;
 #X obj 450 98 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#000000 0 1;
 #X obj 450 69 change -1;
 #X obj 380 100 t f f;
 #X connect 0 0 9 0;
@@ -156,14 +156,15 @@
 #X connect 32 0 23 0;
 #X connect 32 1 12 0;
 #X coords 0 -1 1 1 73 40 1 127 119;
-#X restore 200 260 pd lp-seq;
-#X obj 200 230 tgl 25 1 empty empty empty 17 7 0 10 #70dbff #000000
+#X restore 240 290 pd lp-seq;
+#X obj 240 260 tgl 25 1 empty empty empty 17 7 0 10 #70dbff #000000
 #000000 1 1;
-#X obj 266 230 bng 25 250 50 0 empty empty empty 17 7 0 10 #dedede
+#X obj 306 260 bng 25 250 50 0 empty empty empty 17 7 0 10 #dedede
 #000000 #000000;
-#X text 120 228 start/stop;
-#X text 296 228 pause/continue;
-#X text 200 200 autoplay sequence;
+#X text 160 258 start/stop;
+#X text 336 258 pause/continue;
+#X text 240 230 autoplay sequence;
+#X text 210 150 ^-- random permutation of chords;
 #X connect 1 0 4 0;
 #X connect 4 0 5 0;
 #X connect 7 0 8 0;
