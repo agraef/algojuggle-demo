@@ -109,13 +109,17 @@
 #X obj 147 5 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X obj 167 5 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
-1 1;
+0 1;
 #X obj 220 27 t b f;
 #X obj 205 57 expr $f1+2*$f2;
 #X obj 200 250 r loopend;
 #X obj 200 279 spigot;
 #X obj 111 5 tgl 15 1 empty empty empty 17 7 0 10 #70dbff #000000 #000000
 1 1;
+#X obj 300 220 pgmin 17;
+#X floatatom 300 249 5 0 0 0 - - -, f 5;
+#X obj 300 277 sel 1 2 3 4;
+#X text 300 180 M-VAVE control on 2nd input, f 14;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 8 0;
@@ -148,4 +152,10 @@
 #X connect 26 0 27 0;
 #X connect 27 0 18 0;
 #X connect 28 0 27 1;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 18 0;
+#X connect 31 1 28 0;
+#X connect 31 2 22 0;
+#X connect 31 3 23 0;
 #X coords 0 -1 1 1 164 50 1 25 0;
