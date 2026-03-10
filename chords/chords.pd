@@ -36,8 +36,12 @@
 #X obj 115 160 unpack s s;
 #X msg 115 189 set \$1;
 #X msg 195 190 set \$1;
+#X obj 20 219 s ch4-oct;
+#X obj 67 250 s ch4-semi;
 #X connect 0 0 2 0;
+#X connect 0 0 9 0;
 #X connect 0 1 3 0;
+#X connect 0 1 10 0;
 #X connect 0 2 6 0;
 #X connect 1 0 0 0;
 #X connect 6 0 7 0;
