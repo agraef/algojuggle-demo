@@ -183,10 +183,10 @@
 #X text 60 258 start/stop;
 #X text 175 258 pause/continue;
 #X text 30 230 autoplay sequence;
-#X text 140 310 play drums/chords;
 #X text 110 10 random permutation of chords --v;
 #X text 360 10 row/col permute;
 #X text 400 160 panic;
+#X text 140 310 solo drums/chords;
 #X connect 1 0 4 0;
 #X connect 4 0 5 0;
 #X connect 7 0 8 0;
