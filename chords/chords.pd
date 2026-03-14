@@ -1,4 +1,4 @@
-#N canvas 48 411 428 332 12;
+#N canvas 48 409 428 334 12;
 #X symbolatom 30 27 10 0 0 0 - #0-prog -, f 10;
 #X symbolatom 110 27 10 0 0 0 - #0-name -, f 10;
 #X obj 30 80 chordprog;
@@ -121,7 +121,7 @@
 #X obj 111 5 tgl 15 1 empty empty empty 17 7 0 10 #70dbff #000000 #000000
 1 1;
 #X text 300 200 M-VAVE control on 2nd input, f 14;
-#N canvas 735 383 450 300 m-vave 0;
+#N canvas 733 381 454 302 m-vave 0;
 #X obj 20 20 pgmin 17;
 #X floatatom 20 49 5 0 0 0 - - -, f 5;
 #X obj 20 136 s solo;
@@ -133,6 +133,9 @@
 #X obj 188 240 outlet;
 #X obj 20 77 sel 1 2 3 4 5 6 7 8;
 #X obj 262 136 s autoplay-start;
+#X obj 208 20 ctlin 76 17;
+#X obj 208 49 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
 #X connect 0 0 1 0;
 #X connect 1 0 9 0;
 #X connect 9 0 5 0;
@@ -143,6 +146,8 @@
 #X connect 9 5 3 0;
 #X connect 9 6 4 0;
 #X connect 9 7 10 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
 #X restore 300 240 pd m-vave;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
