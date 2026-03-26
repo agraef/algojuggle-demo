@@ -21,7 +21,7 @@ fi
 # launch Ardour (we use this as an instrument rack)
 # NOTE: This assumes an "algojuggle-rack" session in the ~/Documents/ardour
 # folder. You'll have to provide this and adjust the filename accordingly.
-ardour8 ~/Documents/ardour/algojuggle-rack/algojuggle-rack.ardour
+ardour9 ~/Documents/ardour/algojuggle-rack/algojuggle-rack.ardour
 
 # NOTE: We'd really like to launch Ardour in the background here, but that
 # doesn't appear to work. Instead, we just wait for Ardour to finish and quit.
