@@ -121,7 +121,7 @@
 #X obj 111 5 tgl 15 1 empty empty empty 17 7 0 10 #70dbff #000000 #000000
 1 1;
 #X text 300 230 M-VAVE control on 2nd input, f 14;
-#N canvas 733 381 454 302 m-vave 0;
+#N canvas 732 380 456 303 m-vave 0;
 #X obj 20 20 pgmin 17;
 #X floatatom 20 49 5 0 0 0 - - -, f 5;
 #X obj 20 136 s solo;
@@ -136,6 +136,26 @@
 #X obj 208 20 ctlin 76 17;
 #X obj 208 49 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
+#X obj 320 20 keyname;
+#X obj 320 49 pack f s;
+#X obj 320 78 route 0 1;
+#X obj 200 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 225 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 200 170 route F1 F2 F3 F4 F5 F6 F7 F8;
+#X obj 250 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 275 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 300 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 325 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 350 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 375 199 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X connect 0 0 1 0;
 #X connect 1 0 9 0;
 #X connect 9 0 5 0;
@@ -148,6 +168,26 @@
 #X connect 9 7 10 0;
 #X connect 11 0 12 0;
 #X connect 12 0 10 0;
+#X connect 13 0 14 0;
+#X connect 13 1 14 1;
+#X connect 14 0 15 0;
+#X connect 15 0 18 0;
+#X connect 16 0 5 0;
+#X connect 17 0 6 0;
+#X connect 18 0 16 0;
+#X connect 18 1 17 0;
+#X connect 18 2 19 0;
+#X connect 18 3 20 0;
+#X connect 18 4 21 0;
+#X connect 18 5 22 0;
+#X connect 18 6 23 0;
+#X connect 18 7 24 0;
+#X connect 19 0 7 0;
+#X connect 20 0 8 0;
+#X connect 21 0 2 0;
+#X connect 22 0 3 0;
+#X connect 23 0 4 0;
+#X connect 24 0 10 0;
 #X restore 300 270 pd m-vave;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
